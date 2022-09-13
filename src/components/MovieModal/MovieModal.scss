@@ -1,0 +1,54 @@
+.movie-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    img {
+        height: auto;
+        width: 30%;
+    }
+
+    .movie-modal-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .movie-modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: .5vh;
+            margin-bottom: 1.5vh;
+        }
+
+        .movie-modal-platform {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5vh;
+        }
+    }
+
+    .movie-modal-plat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin-top: 1.5vh;
+        margin-bottom: 1.5vh;
+        img {
+            height: auto;
+            width: 5%;
+            margin-right: 1vw;
+            padding: calc(1vh + 1px);
+            border-radius: 5px;
+            background-color: #1f1f1f;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .selected {
+            border: 1px solid #fff;
+            padding: 1vh;
+        }
+    }
+}

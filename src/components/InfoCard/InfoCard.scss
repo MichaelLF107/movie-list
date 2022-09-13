@@ -1,0 +1,81 @@
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    height: 30vh;
+    background-color: #232428;
+    color: white;
+    margin: 1vw;
+    border-radius: 10px;
+    padding: 1vw;
+    padding-top: 0.1vw;
+    padding-bottom: 0.5vw;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+
+    .movie-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5vh;
+    }
+
+    .movie-card-image {
+        border-radius: 10px;
+        background-color: #303030;
+        width: 85%;
+        img {
+            height: 20vh;
+            width: auto;
+            border-radius: 10px;
+        }
+    }
+}
+
+.card-logo {
+    position: absolute;
+    margin: -8%;
+    margin-top: -5%;
+    margin-left: -6%;
+    padding: 10px;
+    background-color: #131313;
+    border-radius: 5px;
+    height: 1.8vh;
+    width: auto;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: #494949;
+        transform: scale(1.1);
+    }
+}
+
+.card-watched {
+    position: absolute;
+    margin: 9%;
+    margin-top: -5%;
+    padding: 10px;
+    background-color: #131313;
+    color: #35ff3c;
+    border-radius: 5px;
+    height: auto;
+    width: 1vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-not-watched {
+    position: absolute;
+    margin: 8%;
+    margin-top: -5%;
+    padding: 10px;
+    background-color: #131313;
+    color: #ff4242;
+    border-radius: 5px;
+    height: auto;
+    width: 1vw;
+    transition: all 0.3s ease-in-out;
+}

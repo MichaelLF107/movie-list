@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+  background-color: #131313;
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,15 +29,14 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link {
+  color: #61dafb;
 }

@@ -1,0 +1,44 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.569);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    .modal-content {
+        background-color: #131313;
+        color: white;
+        padding: 20px;
+        width: 60vw;
+        height: 60vh;
+        border-radius: 10px;
+        padding: 2vw;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .modal-title {
+                font-size: 1.5vw;
+                font-weight: 600;
+            }
+            .modal-close {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5vw;
+                cursor: pointer;
+                height: 1.5vw;
+                width: 1.5vw;
+                background-color: #2b2b2b;
+                border-radius: 10%;
+            }
+        }
+    }
+}
