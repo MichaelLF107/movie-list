@@ -3,6 +3,7 @@ import './AddMovieModal.scss';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import { TextField } from '@mui/material';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 const netflix = require('../../logos/netflix.png');
 const hulu = require('../../logos/hulu.png');
@@ -19,6 +20,7 @@ export default function AddMovieModal({handleModal}) {
     const [amazonSelected, setAmazonSelected] = useState(false);
     const [hboSelected, setHboSelected] = useState(false);
     const [paramountSelected, setParamountSelected] = useState(false);
+    const [currentImage, setCurrentImage] = useState({});
 
     const handleChangeNetflix = () => {
         setNetflixSelected(!netflixSelected);
@@ -74,6 +76,10 @@ export default function AddMovieModal({handleModal}) {
         setParamountSelected(!paramountSelected);
     }
 
+    const handleImageUpload = (imageList) => {
+        console.log(imageList);
+    }
+
     const handleSubmit = () => {
         console.log("titulo: ", title);
         if (netflixSelected) {
@@ -94,22 +100,34 @@ export default function AddMovieModal({handleModal}) {
         if (paramountSelected) {
             console.log("paramount");
         }
+        console.log("image: ", currentImage);
     }
 
+    const options = [
+        {
+            text: 'Enviar',
+            onClick: handleSubmit
+        }
+    ]
+
     return (
-        <Modal title="Add Serie" handleModal={handleModal}>
-            <div className="inputs">
-                <TextField className="text-field" label="Nome" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} />
-                <div className="movie-modal-plat">
-                    <img src={netflix} alt="Netflix" className={netflixSelected ? 'selected' : ''} onClick={() => handleChangeNetflix()} />
-                    <img src={hulu} alt="Hulu" className={huluSelected ? 'selected' : ''} onClick={() => handleChangeHulu()} />
-                    <img src={disney} alt="Disney" className={disneySelected ? 'selected' : ''} onClick={() => handleChangeDisney()} />
-                    <img src={amazon} alt="Amazon" className={amazonSelected ? 'selected' : ''} onClick={() => handleChangeAmazon()} />
-                    <img src={hbo} alt="HBO" className={hboSelected ? 'selected' : ''} onClick={() => handleChangeHbo()} />
-                    <img src={paramount} alt="Paramount" className={paramountSelected ? 'selected' : ''} onClick={() => handleChangeParamount()} />
+        <Modal title="Add Serie" handleModal={handleModal} options={options}>
+            <div className="add-movie-modal">
+                <div className="inputs">
+                    <TextField className="text-field" label="Nome" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <div className="movie-modal-plat">
+                        <img src={netflix} alt="Netflix" className={netflixSelected ? 'selected' : 'image'} onClick={() => handleChangeNetflix()} />
+                        <img src={hulu} alt="Hulu" className={huluSelected ? 'selected' : 'image'} onClick={() => handleChangeHulu()} />
+                        <img src={disney} alt="Disney" className={disneySelected ? 'selected' : 'image'} onClick={() => handleChangeDisney()} />
+                        <img src={amazon} alt="Amazon" className={amazonSelected ? 'selected' : 'image'} onClick={() => handleChangeAmazon()} />
+                        <img src={hbo} alt="HBO" className={hboSelected ? 'selected' : 'image'} onClick={() => handleChangeHbo()} />
+                        <img src={paramount} alt="Paramount" className={paramountSelected ? 'selected' : 'image'} onClick={() => handleChangeParamount()} />
+                    </div>
+                </div>
+                <div className="image-upload">
+                    <ImageUpload handleImageUpload={handleImageUpload} setCurrentImage={setCurrentImage} />
                 </div>
             </div>
-            <button onClick={() => handleSubmit()}>Submit</button>
         </Modal>
     )
 }

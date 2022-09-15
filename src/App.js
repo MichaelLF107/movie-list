@@ -91,8 +91,8 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="movie-list">
-        {movies.map(movie => (
-          <InfoCard movie={movie} />
+        {movies.map((movie, index) => (
+          <InfoCard movie={movie} key={index} />
         ))}
       </div>
     </div>
