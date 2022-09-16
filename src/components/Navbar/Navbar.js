@@ -11,6 +11,11 @@ export default function Navbar() {
         setIsModalOpen(!isModalOpen);
     }
 
+    const handleLogout = () => {
+        window.localStorage.removeItem('userId');
+        window.location.href = '/';
+    }
+
     return (
         <>
             <div className="navbar">
@@ -18,6 +23,9 @@ export default function Navbar() {
                     <div className="navbar-button" onClick={() => handleModal()}>
                         <span>Add Serie</span>
                     </div>
+                </div>
+                <div className="navbar-item" onClick={() => handleLogout()}>
+                    <span>logoff</span>
                 </div>
                 <div className="navbar-item logo">
                     <LocalMoviesOutlinedIcon fontSize='xx-large' />
