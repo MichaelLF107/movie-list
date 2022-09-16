@@ -5,6 +5,8 @@ import Modal from '../Modal/Modal';
 import { TextField } from '@mui/material';
 import ImageUpload from '../ImageUpload/ImageUpload';
 
+import { registerMovie } from '../../services/MovieService';
+
 const netflix = require('../../logos/netflix.png');
 const hulu = require('../../logos/hulu.png');
 const disney = require('../../logos/disney.png');
@@ -80,27 +82,35 @@ export default function AddMovieModal({handleModal}) {
         console.log(imageList);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         console.log("titulo: ", title);
+        let platform = '';
+        let link = '';
         if (netflixSelected) {
-            console.log("netflix");
+            platform = 'netflix';
+            link = 'https://www.netflix.com/browse';
         }
         if (huluSelected) {
-            console.log("hulu");
+            platform = 'hulu';
+            link = 'https://www.hulu.com/welcome';
         }
         if (disneySelected) {
-            console.log("disney");
+            platform = 'disney';
+            link = 'https://www.disneyplus.com/';
         }
         if (amazonSelected) {
-            console.log("amazon");
+            platform = 'amazon';
+            link = 'https://www.primevideo.com/';
         }
         if (hboSelected) {
-            console.log("hbo");
+            platform = 'hbo';
+            link = 'https://www.hbomax.com/';
         }
         if (paramountSelected) {
-            console.log("paramount");
+            platform = 'paramount';
+            link = 'https://www.paramountplus.com/';
         }
-        console.log("image: ", currentImage);
+        console.log("image: ", await registerMovie(title, currentImage.file, link, platform, false, parseInt(window.localStorage.getItem('userId'))));
     }
 
     const options = [

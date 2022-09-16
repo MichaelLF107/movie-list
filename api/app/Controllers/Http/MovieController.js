@@ -4,13 +4,14 @@ const Movie = use('App/Models/Movie')
 
 class MovieController {
     async registerMovie({ request, response }) {
+        request.header("Access-Control-Allow-Origin", "*");
         const { title, cover, link, platform, watched } = request.all()
         let { user_id } = request.all()
         if (user_id === undefined) {
             user_id = 1
         }
+        console.log(title, cover, link, platform, watched, user_id)
         const movie = await Movie.create({ title, cover, link, platform, watched, user_id })
-        response.header("Access-Control-Allow-Origin", "*");
         return response.json(movie)
     }
 
