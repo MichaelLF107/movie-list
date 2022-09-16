@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 
 import { getAllUsers } from '../../services/UserServices';
 
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
+
 export default function UserSelect() {
     const [users, setUsers] = useState([]);
 
@@ -31,10 +34,11 @@ export default function UserSelect() {
 
     return (
         <div className="UserSelect">
-            <h1>Selecione um usuário</h1>
+            <div className="title"><BadgeOutlinedIcon fontSize="large" /> Selecione um usuário</div>
             <div className="user-list">
                 {users.map((user, index) => (
                     <div className="user" key={index} onClick={() => handleUserSelect(user.id)}>
+                        <AssignmentIndOutlinedIcon fontSize="inherit" />
                         <p>{user.name}</p>
                     </div>
                 ))}

@@ -15,13 +15,17 @@ function Home() {
 
 	async function handleMovies() {
 		const movies = await getMovieById(userId);
+    movies.forEach(movie => {
+      movie.logo = logos[movie.platform];
+      console.log(movie.platform);
+    });
 		setMovies(movies);
 	}
 
 	useEffect(() => {
 		handleMovies();
 	}, []);
- 
+
   return (
     <div className="Home">
       <Navbar />

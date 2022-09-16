@@ -15,7 +15,7 @@ export default function InfoCard({movie}) {
     return (
         <>
             <div className="movie-card" onClick={() => setIsModalOpen(!isModalOpen)}>
-                <img src={movie.logo} alt={movie.title} className="card-logo" onClick={() => handleLink()} />
+                <img src={movie.logo} alt={movie.platform.toUpperCase()} className="card-logo" onClick={() => handleLink()} />
                 <VisibilityOutlinedIcon className={movie.watched ? 'card-watched' : 'card-not-watched'} />
                 {movie.cover ?
                     <div className="movie-card-image">
