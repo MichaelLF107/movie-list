@@ -8,6 +8,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import logos from '../../logos/logos';
 
 import { getMovieById } from '../../services/MovieService';
+import { getUserById } from '../../services/UserServices';
 
 function Home() {
 	const [userId, setUserId] = useState(window.localStorage.getItem('userId'));
@@ -17,7 +18,6 @@ function Home() {
 		const movies = await getMovieById(userId);
     movies.forEach(movie => {
       movie.logo = logos[movie.platform];
-      console.log(movie.platform);
     });
 		setMovies(movies);
 	}

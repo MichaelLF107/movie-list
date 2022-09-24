@@ -4,6 +4,7 @@ import './App.scss';
 
 import Home from './pages/Home/Home';
 import UserSelect from './pages/UserSelect/UserSelect';
+import Settings from './pages/Settings/Settings';
 
 export default function App() {
   return (
@@ -14,6 +15,9 @@ export default function App() {
         </Route>
         <Route exact path="/home">
           <Home />
+        </Route>
+        <Route exact path="/settings">
+          <Settings />
         </Route>
       </Switch>
     </Router>

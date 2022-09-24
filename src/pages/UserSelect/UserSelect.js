@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { getAllUsers } from '../../services/UserServices';
 
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 
 export default function UserSelect() {
     const [users, setUsers] = useState([]);
@@ -30,6 +29,7 @@ export default function UserSelect() {
     useEffect(() => {
         handleLoggedUser();
         handleUsers();
+        document.title = 'Watch List - User Select';
     }, []);
 
     return (
@@ -38,7 +38,7 @@ export default function UserSelect() {
             <div className="user-list">
                 {users.map((user, index) => (
                     <div className="user" key={index} onClick={() => handleUserSelect(user.id)}>
-                        <AssignmentIndOutlinedIcon fontSize="inherit" />
+                        <img src={user.file} className="userPic" alt='' />
                         <p>{user.name}</p>
                     </div>
                 ))}

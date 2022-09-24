@@ -39,6 +39,21 @@
     .logo {
         animation: rainbow infinite 5s linear;
     }
+
+    .user-menu-navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .user-pic {
+            height: 5vh;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .menu-arrow {
+            cursor: pointer;
+        }
+    }
 }
 
 @keyframes rainbow {

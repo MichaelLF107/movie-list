@@ -8,7 +8,6 @@ export default function ImageUpload({handleImageUpload, setCurrentImage}) {
     const maxNumber = 1;
 
     const onChange = (imageList, addUpdateIndex) => {
-        console.log(imageList, addUpdateIndex);
         setImages(imageList);
         setCurrentImage(imageList[0]);
         handleImageUpload(imageList);

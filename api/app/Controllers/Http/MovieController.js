@@ -1,18 +1,20 @@
-'use strict'
-
+// eslint-disable-next-line no-undef
 const Movie = use('App/Models/Movie')
 
 class MovieController {
     async registerMovie({ request, response }) {
-        request.header("Access-Control-Allow-Origin", "*");
-        const { title, cover, link, platform, watched } = request.all()
-        let { user_id } = request.all()
-        if (user_id === undefined) {
-            user_id = 1
-        }
-        console.log(title, cover, link, platform, watched, user_id)
-        const movie = await Movie.create({ title, cover, link, platform, watched, user_id })
-        return response.json(movie)
+        const res = request.all().res
+        const movie = new Movie()
+        movie.title = res.title
+        movie.link = res.link
+        movie.platform = res.platform
+        movie.watched = res.watched
+        movie.user_id = res.user_id
+        movie.file = res.file
+        movie.file_name = res.file_name
+        await movie.save()
+        response.header("Access-Control-Allow-Origin", "*");
+        return response.status(201).send(movie)
     }
 
     async getMovies({ response }) {
@@ -34,6 +36,30 @@ class MovieController {
         const movie = await Movie.find(params.id)
         if (movie) {
             await movie.delete()
+            return response.send(movie)
+        }
+        response.header("Access-Control-Allow-Origin", "*");
+        return response.status(404).send({ data: 'Resource not found' })
+    }
+
+    async setMovieWatched({ params, response }) {
+        const movie = await Movie.find(params.id)
+        if (movie) {
+            movie.watched = true
+            await movie.save()
+            return response.send(movie)
+        }
+        response.header("Access-Control-Allow-Origin", "*");
+        return response.status(404).send({ data: 'Resource not found' })
+    }
+
+    async changeMoviePlatform({ params, request, response }) {
+        const movie = await Movie.find(params.id)
+        if (movie) {
+            const { platform, link } = request.all()
+            movie.platform = platform
+            movie.link = link
+            await movie.save()
             return response.send(movie)
         }
         response.header("Access-Control-Allow-Origin", "*");

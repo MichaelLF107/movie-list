@@ -13,6 +13,7 @@ const disney = require('../../logos/disney.png');
 const amazon = require('../../logos/amazon.png');
 const hbo = require('../../logos/hbo.png');
 const paramount = require('../../logos/paramount.png');
+const watched = false;
 
 export default function AddMovieModal({handleModal}) {
     const [title, setTitle] = useState('');
@@ -83,7 +84,8 @@ export default function AddMovieModal({handleModal}) {
     }
 
     const handleSubmit = async () => {
-        console.log("titulo: ", title);
+        const reader = new FileReader()
+        reader.readAsDataURL(currentImage.file)
         let platform = '';
         let link = '';
         if (netflixSelected) {
@@ -110,7 +112,20 @@ export default function AddMovieModal({handleModal}) {
             platform = 'paramount';
             link = 'https://www.paramountplus.com/';
         }
-        console.log("image: ", await registerMovie(title, currentImage.file, link, platform, false, parseInt(window.localStorage.getItem('userId'))));
+        reader.onload = async () => {
+            const base64 = reader.result;
+            const movie = {
+                title: title,
+                link: link,
+                platform: platform,
+                watched: watched,
+                user_id: parseInt(localStorage.getItem('userId')),
+                file: base64,
+                file_name: currentImage.file.name
+            }
+            await registerMovie(movie);
+            window.location.reload();
+        }
     }
 
     const options = [

@@ -10,12 +10,22 @@ export const getMovieById = async (id) => {
     return response.data;
 }
 
-export const registerMovie = async (title, cover, link, platform, watched, user_id) => {
-    const response = await api.post("/registerMovie", { title, cover, link, platform, watched, user_id });
+export const registerMovie = async (res) => {
+    const response = await api.post("/registerMovie", { res });
     return response.data;
 }
 
 export const deleteMovie = async (id) => {
     const response = await api.delete(`/deleteMovie/${id}`);
+    return response.data;
+}
+
+export const setMovieWatched = async (id) => {
+    const response = await api.put(`/setMovieWatched/${id}`);
+    return response.data;
+}
+
+export const changeMoviePlatform = async (id, platform, link) => {
+    const response = await api.put(`/changeMoviePlatform/${id}`, { platform, link });
     return response.data;
 }

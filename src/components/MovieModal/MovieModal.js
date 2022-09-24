@@ -4,6 +4,8 @@ import './MovieModal.scss';
 
 import Modal from '../Modal/Modal';
 
+import { setMovieWatched, changeMoviePlatform } from '../../services/MovieService';
+
 const netflix = require('../../logos/netflix.png');
 const hulu = require('../../logos/hulu.png');
 const disney = require('../../logos/disney.png');
@@ -27,6 +29,7 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        changeMoviePlatform(movie.id, 'netflix', 'https://www.netflix.com');
     }
 
     const handleChangeHulu = () => {
@@ -36,6 +39,7 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        changeMoviePlatform(movie.id, 'hulu', 'https://www.hulu.com');
     }
 
     const handleChangeDisney = () => {
@@ -45,6 +49,7 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        changeMoviePlatform(movie.id, 'disney', 'https://www.disneyplus.com');
     }
 
     const handleChangeAmazon = () => {
@@ -54,6 +59,7 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(!amazonSelected);
         setHboSelected(false);
         setParamountSelected(false);
+        changeMoviePlatform(movie.id, 'amazon', 'https://www.primevideo.com/');
     }
 
     const handleChangeHbo = () => {
@@ -63,6 +69,7 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(false);
         setHboSelected(!hboSelected);
         setParamountSelected(false);
+        changeMoviePlatform(movie.id, 'hbo', 'https://www.hbomax.com/');
     }
 
     const handleChangeParamount = () => {
@@ -72,6 +79,12 @@ export default function MovieModal({movie, handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(!paramountSelected);
+        changeMoviePlatform(movie.id, 'paramount', 'https://www.paramountplus.com/');
+    }
+
+    const handleChangeWatched = () => {
+        setWatched(!watched);
+        setMovieWatched(movie.id, !watched);
     }
 
     return (
@@ -80,7 +93,7 @@ export default function MovieModal({movie, handleModal}) {
                 <div className="movie-modal-info">
                     <span className="movie-modal-title">{movie.title}</span>
                 </div>
-                <img src={movie.cover} alt={movie.title} />
+                <img src={movie.file} alt={movie.title} />
                 <div className="movie-modal-plat">
                     <img src={netflix} alt="Netflix" className={netflixSelected ? 'selected' : ''} onClick={() => handleChangeNetflix()} />
                     <img src={hulu} alt="Hulu" className={huluSelected ? 'selected' : ''} onClick={() => handleChangeHulu()} />
@@ -91,7 +104,7 @@ export default function MovieModal({movie, handleModal}) {
                 </div>
                 <div className="movie-modal-watched">
                     <span className="movie-modal-watched-title">Watched</span>
-                    <input type="checkbox" checked={watched} onChange={() => setWatched(!watched)} />
+                    <input type="checkbox" checked={watched} onChange={() => handleChangeWatched()} />
                 </div>
             </div>
         </Modal>

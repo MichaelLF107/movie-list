@@ -8,6 +8,9 @@ class UsersSchema extends Schema {
     this.create('users', (table) => {
       table.increments()
       table.string('name', 80).notNullable()
+      table.boolean('admin').defaultTo(false)
+      table.text('file', 'longtext')
+      table.string('file_name', 65535)
       table.timestamps()
     })
   }

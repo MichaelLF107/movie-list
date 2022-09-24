@@ -5,7 +5,17 @@ export const getAllUsers = async () => {
     return response.data;
 }
 
-export const registerUser = async (name) => {
-    const response = await api.post('/users', { name });
+export const registerUser = async (res) => {
+    const response = await api.post('/registerUser', { res });
+    return response.status;
+}
+
+export const getUserById = async (id) => {
+    const response = await api.get(`/users/${id}`);
+    return response.data;
+}
+
+export const deleteUser = async (id) => {
+    const response = await api.delete(`/deleteUser/${id}`);
     return response.data;
 }
