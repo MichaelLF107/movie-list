@@ -65,6 +65,28 @@ class MovieController {
         response.header("Access-Control-Allow-Origin", "*");
         return response.status(404).send({ data: 'Resource not found' })
     }
+
+    async getMoviesWithFilter ({ params, request, response }) {
+        const { watched, platform } = request.all()
+        if (watched === 'true' && platform === ''){
+            const result = await Movie
+                .query()
+                .where('user_id', parseInt(params.id))
+                .where('watched', watched === 'true')
+                .fetch()
+            response.header("Access-Control-Allow-Origin", "*");
+            return response.send(result)
+        } else {
+            const result = await Movie
+                .query()
+                .where('user_id', parseInt(params.id))
+                .where('watched', watched === 'true')
+                .where('platform', platform)
+                .fetch()
+            response.header("Access-Control-Allow-Origin", "*");
+            return response.send(result)
+        }
+    }
 }
 
 module.exports = MovieController

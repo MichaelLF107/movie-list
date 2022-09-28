@@ -29,3 +29,8 @@ export const changeMoviePlatform = async (id, platform, link) => {
     const response = await api.put(`/changeMoviePlatform/${id}`, { platform, link });
     return response.data;
 }
+
+export const getMoviesWithFilters = async (id, watched, platform) => {
+    const response = await api.get(`/getMoviesWithFilters/${id}`, { params: { watched, platform } });
+    return response.data;
+}
