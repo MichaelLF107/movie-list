@@ -10,9 +10,9 @@ import UserMenu from '../UserMenu/UserMenu';
 import { getUserById } from '../../services/UserServices';
 
 export default function Navbar() {
+    const userId = parseInt(window.localStorage.getItem('userId'));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [userId, setUserId] = useState(window.localStorage.getItem('userId'));
     const [user, setUser] = useState({});
 
     const handleModal = () => {
@@ -21,6 +21,10 @@ export default function Navbar() {
 
     const handleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    }
+
+    const handleHome = () => {
+        window.location.href = '/home';
     }
 
     const handleLogout = () => {
@@ -46,7 +50,7 @@ export default function Navbar() {
                         <span>Add Serie</span>
                     </div>
                 </div>
-                <div className="navbar-item logo">
+                <div className="navbar-item logo" onClick={handleHome}>
                     <LocalMoviesOutlinedIcon fontSize='xx-large' />
                     <span>Watch List</span>
                 </div>

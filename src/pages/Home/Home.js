@@ -64,7 +64,14 @@ function Home() {
     setPlatform(e.target.value);
   }
 
+  function handleUserNotLogged() {
+    if (!userId) {
+      window.location.href = '/';
+    }
+  }
+
 	useEffect(() => {
+    handleUserNotLogged();
 		handleMovies();
 	}, []);
 
