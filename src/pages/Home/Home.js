@@ -91,6 +91,10 @@ function Home() {
               <MenuItem value={"hulu"}>Hulu</MenuItem>
               <MenuItem value={"netflix"}>Netflix</MenuItem>
               <MenuItem value={"paramount"}>Paramount +</MenuItem>
+              <MenuItem value={"crunchyroll"}>Crunchyroll</MenuItem>
+              <MenuItem value={"star"}>Star +</MenuItem>
+              <MenuItem value={"torrent"}>Torrent</MenuItem>
+              <MenuItem value={"pi"}>Pi FanSub</MenuItem>
             </Select>
           </FormControl>
         </div>

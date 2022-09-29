@@ -9,7 +9,10 @@ export default function InfoCard({movie}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleLink = () => {
-        window.open(movie.link, '_blank');
+        if (movie.link !== '') {
+            window.open(movie.link, '_blank');
+        }
+        return;
     }
 
     return (

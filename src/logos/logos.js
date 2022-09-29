@@ -4,7 +4,11 @@ const logos = {
     "disney": require("./disney.png"),
     "amazon": require("./amazon.png"),
     "hbo": require("./hbo.png"),
-    "paramount": require("./paramount.png")
+    "paramount": require("./paramount.png"),
+    "crunchyroll": require("./crunchyroll.png"),
+    "torrent": require("./torrent.png"),
+    "star": require("./star.png"),
+    "pi": require("./pi.png")
 }
 
 export default logos;

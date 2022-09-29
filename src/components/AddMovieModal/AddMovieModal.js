@@ -13,6 +13,10 @@ const disney = require('../../logos/disney.png');
 const amazon = require('../../logos/amazon.png');
 const hbo = require('../../logos/hbo.png');
 const paramount = require('../../logos/paramount.png');
+const crunchyroll = require('../../logos/crunchyroll.png');
+const torrent = require('../../logos/torrent.png');
+const star = require('../../logos/star.png');
+const pi = require('../../logos/pi.png');
 const watched = false;
 
 export default function AddMovieModal({handleModal}) {
@@ -23,6 +27,10 @@ export default function AddMovieModal({handleModal}) {
     const [amazonSelected, setAmazonSelected] = useState(false);
     const [hboSelected, setHboSelected] = useState(false);
     const [paramountSelected, setParamountSelected] = useState(false);
+    const [crunchyrollSelected, setCrunchyrollSelected] = useState(false);
+    const [torrentSelected, setTorrentSelected] = useState(false);
+    const [starSelected, setStarSelected] = useState(false);
+    const [piSelected, setPiSelected] = useState(false);
     const [currentImage, setCurrentImage] = useState({});
 
     const handleChangeNetflix = () => {
@@ -32,6 +40,10 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
     }
 
     const handleChangeHulu = () => {
@@ -41,6 +53,10 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
     }
 
     const handleChangeDisney = () => {
@@ -50,6 +66,10 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
     }
 
     const handleChangeAmazon = () => {
@@ -59,6 +79,10 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(!amazonSelected);
         setHboSelected(false);
         setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
     }
 
     const handleChangeHbo = () => {
@@ -68,6 +92,10 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(false);
         setHboSelected(!hboSelected);
         setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
     }
 
     const handleChangeParamount = () => {
@@ -77,6 +105,62 @@ export default function AddMovieModal({handleModal}) {
         setAmazonSelected(false);
         setHboSelected(false);
         setParamountSelected(!paramountSelected);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
+    }
+
+    const handleChangeCrunchyroll = () => {
+        setNetflixSelected(false);
+        setHuluSelected(false);
+        setDisneySelected(false);
+        setAmazonSelected(false);
+        setHboSelected(false);
+        setParamountSelected(false);
+        setCrunchyrollSelected(!crunchyrollSelected);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(false);
+    }
+
+    const handleChangeTorrent = () => {
+        setNetflixSelected(false);
+        setHuluSelected(false);
+        setDisneySelected(false);
+        setAmazonSelected(false);
+        setHboSelected(false);
+        setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(!torrentSelected);
+        setStarSelected(false);
+        setPiSelected(false);
+    }
+
+    const handleChangeStar = () => {
+        setNetflixSelected(false);
+        setHuluSelected(false);
+        setDisneySelected(false);
+        setAmazonSelected(false);
+        setHboSelected(false);
+        setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(!starSelected);
+        setPiSelected(false);
+    }
+
+    const handleChangePi = () => {
+        setNetflixSelected(false);
+        setHuluSelected(false);
+        setDisneySelected(false);
+        setAmazonSelected(false);
+        setHboSelected(false);
+        setParamountSelected(false);
+        setCrunchyrollSelected(false);
+        setTorrentSelected(false);
+        setStarSelected(false);
+        setPiSelected(!piSelected);
     }
 
     const handleImageUpload = (imageList) => {
@@ -111,6 +195,22 @@ export default function AddMovieModal({handleModal}) {
         if (paramountSelected) {
             platform = 'paramount';
             link = 'https://www.paramountplus.com/';
+        }
+        if (crunchyrollSelected) {
+            platform = 'crunchyroll';
+            link = 'https://www.crunchyroll.com/';
+        }
+        if (torrentSelected) {
+            platform = 'torrent';
+            link = '';
+        }
+        if (starSelected) {
+            platform = 'star';
+            link = 'https://www.starplus.com/';
+        }
+        if (piSelected) {
+            platform = 'pi';
+            link = 'https://pifansubs.org/';
         }
         reader.onload = async () => {
             const base64 = reader.result;
@@ -147,6 +247,10 @@ export default function AddMovieModal({handleModal}) {
                         <img src={amazon} alt="Amazon" className={amazonSelected ? 'selected' : 'image'} onClick={() => handleChangeAmazon()} />
                         <img src={hbo} alt="HBO" className={hboSelected ? 'selected' : 'image'} onClick={() => handleChangeHbo()} />
                         <img src={paramount} alt="Paramount" className={paramountSelected ? 'selected' : 'image'} onClick={() => handleChangeParamount()} />
+                        <img src={crunchyroll} alt="Crunchyroll" className={crunchyrollSelected ? 'selected' : 'image'} onClick={() => handleChangeCrunchyroll()} />
+                        <img src={star} alt="Star" className={starSelected ? 'selected' : 'image'} onClick={() => handleChangeStar()} />
+                        <img src={torrent} alt="Torrent" className={torrentSelected ? 'selected' : 'image'} onClick={() => handleChangeTorrent()} />
+                        <img src={pi} alt="Pi" className={piSelected ? 'selected' : 'image'} onClick={() => handleChangePi()} />
                     </div>
                 </div>
                 <div className="image-upload">
