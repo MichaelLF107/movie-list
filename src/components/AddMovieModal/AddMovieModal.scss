@@ -68,3 +68,14 @@
         padding: 1vh;
     }
 }
+
+.notification {
+    position: absolute;
+    padding: 1vw;
+    background-color: #ac000068;
+    border-radius: .3vw;
+    font-size: 1.2rem;
+    left: 42.5vw;
+    top: 23vh;
+    z-index: 100;
+}

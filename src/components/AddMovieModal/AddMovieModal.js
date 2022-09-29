@@ -21,6 +21,7 @@ const watched = false;
 
 export default function AddMovieModal({handleModal}) {
     const [title, setTitle] = useState('');
+    const [notification, setNotification] = useState('');
     const [netflixSelected, setNetflixSelected] = useState(false);
     const [huluSelected, setHuluSelected] = useState(false);
     const [disneySelected, setDisneySelected] = useState(false);
@@ -32,6 +33,13 @@ export default function AddMovieModal({handleModal}) {
     const [starSelected, setStarSelected] = useState(false);
     const [piSelected, setPiSelected] = useState(false);
     const [currentImage, setCurrentImage] = useState({});
+
+    const handleNotification = (notification) => {
+        setNotification(notification);
+        setTimeout(() => {
+            setNotification('');
+        }, 4000);
+    }
 
     const handleChangeNetflix = () => {
         setNetflixSelected(!netflixSelected);
@@ -168,6 +176,18 @@ export default function AddMovieModal({handleModal}) {
     }
 
     const handleSubmit = async () => {
+        if (title === '') {
+            handleNotification('🚫 Digite um titulo para a série');
+            return;
+        }
+        if (!netflixSelected && !huluSelected && !disneySelected && !amazonSelected && !hboSelected && !paramountSelected && !crunchyrollSelected && !torrentSelected && !starSelected && !piSelected) {
+            handleNotification('🚫 Selecione uma plataforma');
+            return;
+        }
+        if (currentImage.file === undefined) {
+            handleNotification('🚫 Selecione uma imagem');
+            return;
+        }
         const reader = new FileReader()
         reader.readAsDataURL(currentImage.file)
         let platform = '';
@@ -239,6 +259,7 @@ export default function AddMovieModal({handleModal}) {
         <Modal title="Add Serie" handleModal={handleModal} options={options}>
             <div className="add-movie-modal">
                 <div className="inputs">
+                    {notification.length > 0 && <div className="notification">{notification}</div>}
                     <TextField className="text-field" label="Nome" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <div className="movie-modal-plat">
                         <img src={netflix} alt="Netflix" className={netflixSelected ? 'selected' : 'image'} onClick={() => handleChangeNetflix()} />
