@@ -42,10 +42,11 @@ class MovieController {
         return response.status(404).send({ data: 'Resource not found' })
     }
 
-    async setMovieWatched({ params, response }) {
+    async setMovieWatched({ params, request, response }) {
         const movie = await Movie.find(params.id)
+        const { watched } = request.all()
         if (movie) {
-            movie.watched = true
+            movie.watched = watched
             await movie.save()
             return response.send(movie)
         }
@@ -73,6 +74,14 @@ class MovieController {
                 .query()
                 .where('user_id', parseInt(params.id))
                 .where('watched', watched === 'true')
+                .fetch()
+            response.header("Access-Control-Allow-Origin", "*");
+            return response.send(result)
+        } else if (watched === 'false' && platform === '') {
+            const result = await Movie
+                .query()
+                .where('user_id', parseInt(params.id))
+                .where('watched', watched)
                 .fetch()
             response.header("Access-Control-Allow-Origin", "*");
             return response.send(result)

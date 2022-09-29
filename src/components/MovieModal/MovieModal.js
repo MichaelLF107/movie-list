@@ -4,6 +4,9 @@ import './MovieModal.scss';
 
 import Modal from '../Modal/Modal';
 
+import { Checkbox } from '@mui/material';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+
 import { setMovieWatched, changeMoviePlatform } from '../../services/MovieService';
 
 const netflix = require('../../logos/netflix.png');
@@ -104,7 +107,12 @@ export default function MovieModal({movie, handleModal}) {
                 </div>
                 <div className="movie-modal-watched">
                     <span className="movie-modal-watched-title">Watched</span>
-                    <input type="checkbox" checked={watched} onChange={() => handleChangeWatched()} />
+                        <Checkbox
+                            icon={<VisibilityOutlinedIcon className="not-watched" style={{fontSize: "2.2rem"}} />}
+                            checkedIcon={<VisibilityOutlinedIcon className="watched" style={{fontSize: "2.2rem"}} />}
+                            checked={watched}
+                            onChange={() => handleChangeWatched()}
+                        />
                 </div>
             </div>
         </Modal>

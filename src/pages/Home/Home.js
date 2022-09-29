@@ -18,14 +18,6 @@ function Home() {
 	const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(false);
   const [platform, setPlatform] = useState('');
-  const [notification, setNotification] = useState('');
-
-  function handleNotification(noti) {
-    setNotification(noti);
-    setTimeout(() => {
-      setNotification('');
-    }, 4500);
-  }
 
 	async function handleMovies() {
 		const movies = await getMovieById(userId);
@@ -36,10 +28,6 @@ function Home() {
 	}
 
   async function handleMoviesWithFilters() {
-    if (platform === '' && !watched) {
-      handleNotification('Selecione um site');
-      return;
-    }
     const movies = await getMoviesWithFilters(userId, watched, platform);
     movies.forEach(movie => {
       movie.logo = logos[movie.platform];
@@ -73,12 +61,12 @@ function Home() {
 	useEffect(() => {
     handleUserNotLogged();
 		handleMovies();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
   return (
     <div className="Home">
       <Navbar />
-      {notification.length === 0 ? null : <div className="notification">{notification}</div>}
       <div className="filter">
         <div className="filter-switch">
           <FormControlLabel control={<Switch

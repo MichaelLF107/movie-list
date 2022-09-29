@@ -20,8 +20,8 @@ export const deleteMovie = async (id) => {
     return response.data;
 }
 
-export const setMovieWatched = async (id) => {
-    const response = await api.put(`/setMovieWatched/${id}`);
+export const setMovieWatched = async (id, watched) => {
+    const response = await api.put(`/setMovieWatched/${id}`, { watched });
     return response.data;
 }
 
