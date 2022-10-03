@@ -4,9 +4,12 @@ import { useState } from 'react'
 import MovieModal from '../MovieModal/MovieModal';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 export default function InfoCard({movie}) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [animation] = useAutoAnimate();
 
     const handleLink = () => {
         if (movie.link !== '') {
@@ -29,7 +32,7 @@ export default function InfoCard({movie}) {
                 : null}
                 <span className="movie-title">{movie.title}</span>
             </div>
-            {isModalOpen && <MovieModal movie={movie} handleModal={() => setIsModalOpen(!isModalOpen)} />}
+            {isModalOpen && <MovieModal movie={movie} handleModal={() => setIsModalOpen(!isModalOpen)} ref={animation} />}
         </>
     )
 }

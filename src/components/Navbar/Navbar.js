@@ -34,7 +34,6 @@ export default function Navbar() {
 
     async function handleSelectedUser() {
         const user = await getUserById(userId);
-        user.profile = 'https://pbs.twimg.com/profile_images/1313579240051412992/mkHGgIOZ_400x400.jpg';
         setUser(user);
     }
 

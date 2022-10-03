@@ -2,6 +2,8 @@ import './Home.scss';
 
 import { useState, useEffect } from 'react';
 
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 import InfoCard from '../../components/InfoCard/InfoCard';
 import Navbar from '../../components/Navbar/Navbar';
 
@@ -18,6 +20,7 @@ function Home() {
 	const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(false);
   const [platform, setPlatform] = useState('');
+  const [animation] = useAutoAnimate();
 
 	async function handleMovies() {
 		const movies = await getMovieById(userId);
@@ -84,6 +87,7 @@ function Home() {
               value={platform}
               label="Site"
               onChange={handleChangePlatform}
+              ref={animation}
             >
               <MenuItem value={"amazon"}>Amazon Prime</MenuItem>
               <MenuItem value={"disney"}>Disney +</MenuItem>
@@ -109,7 +113,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="movie-list">
+      <div className="movie-list" ref={animation}>
         {movies.map((movie, index) => (
           <InfoCard movie={movie} key={index} />
         ))}
