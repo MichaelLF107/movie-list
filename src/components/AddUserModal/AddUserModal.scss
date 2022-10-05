@@ -4,3 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.image-item {
+    margin-top: 2.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

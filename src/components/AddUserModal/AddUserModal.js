@@ -9,7 +9,7 @@ import { registerUser } from '../../services/UserServices';
 
 import { useState } from 'react';
 
-export default function AddUserModal({handleModal}) {
+export default function AddUserModal({handleModal, admin}) {
     const [name, setName] = useState('');
 
     const [currentImage, setCurrentImage] = useState({});
@@ -23,7 +23,7 @@ export default function AddUserModal({handleModal}) {
                 name: name,
                 file: base64,
                 file_name: currentImage.file.name,
-                admin: false
+                admin: admin ? true : false
             }
             try {
                 await registerUser(user);
