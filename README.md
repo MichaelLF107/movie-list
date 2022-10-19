@@ -15,6 +15,7 @@ Open a terminal on the api folder of the project and run:
 
 The first time you will need to run
 ### `docker-compose up -d`
+### `npm i --global @adonisjs/cli`
 ### `adonis migration:run`
 
 After the initial setup of the docker container and the migrations, you can run:
